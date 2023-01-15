@@ -86,8 +86,9 @@ class GallerySaver {
     }
     var bytes = req.bodyBytes;
     String dir = (await getTemporaryDirectory()).path;
-    print(dir);
-    File file = new File('$dir/${basename(url)}');
+    String name = basename(url).split('?')[0];
+    print(name);
+    File file = new File('$dir/$name');
     await file.writeAsBytes(bytes);
     print('File size:${await file.length()}');
     print(file.path);
